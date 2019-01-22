@@ -9,7 +9,7 @@
     "socket.io-client": "^2.2.0"
   },
   "scripts": {
-    "start": "node client.min.js --server=https://chatthingy.appspot.com --username=Noah",
+    "start": "node client.min.js --server=https://chatthingy.appspot.com --username=$USER",
     "dev": "node client.js",
     "build-serve": "yarn build && yarn start",
     "build": "minify client.js --out-file client.min.js --mangle.keepClassName"
