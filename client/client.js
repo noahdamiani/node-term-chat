@@ -30,24 +30,26 @@ class Client {
   }
 
   init() {
-    this.setUser(() => {
-      this.chat.emit('chat message', `${this.user} joined.`)
+    this.setUser((user) => {
+      user ? user : this.user;
+      this.chat.emit('chat message', `${user} joined.`)
+      this.rl.clearLine();
+      process.stdout.cursorTo(0)
     });
   }
 
   setUser(callback) {
     if(argv.username) {
       this.user = argv.username
+      callback();
+      this.message();
     } else {
       this.rl.question('username?  ', (username) => {
         this.user = username;
+        callback(username);
+        this.message();
       });
     }
-
-    callback();
-    this.message();
-    this.rl.clearLine();
-    process.stdout.cursorTo(0)
   }
 
   message() {
