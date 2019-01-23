@@ -41,7 +41,7 @@ class Client {
   setUser(callback) {
     if(argv.username) {
       this.user = argv.username
-      callback();
+      callback(argv.username);
       this.message();
     } else {
       this.rl.question('username?  ', (username) => {

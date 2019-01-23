@@ -1,0 +1,4 @@
+#!/bin/bash
+IP=`ipconfig getifaddr en0`
+echo Connecting to http://$IP:3000 as $USER
+node client.min.js --server=http://$IP:3000 --username=$USER
